@@ -1,12 +1,18 @@
 //package project1;
 
 import java.util.stream.*;
-import java.util.regex.*;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.HashSet;
+
+/**
+ * Classifies a set of movie reviews as positive or negative based on their 
+ * sentiment, and shows the accuracy of the classifications.
+ * 
+ * @author Taylor Keesee
+ */
 
 public class SentimentAnalysisApp {
     public static void main (String [] args){
@@ -22,52 +28,68 @@ public class SentimentAnalysisApp {
         int totalNeg = 0;
         
         makeTables(positive, negative, posWords, negWords);
-        
+
         File posFolder = new File(posReviews);
         File [] listPosReviews = posFolder.listFiles();
-        String review = "";
         for (File file : listPosReviews){
             totalPos++;
-            review = getReview(file.getAbsolutePath());
-            review = review.replaceAll("\\p{Punct}", "");
-            review = review.toLowerCase();
-            String [] wordsInReview = review.split("\\s+");
-            String classification = classifyReview(wordsInReview, positive, negative);
-            
-            if (classification.equals("positive")){
+            MovieReview review = new MovieReview(SentimentAnalysisApp.getReview(file.getAbsolutePath()));
+            review.removePunct();
+            review.makeLowerCase();
+            review.setClassification(classifyReview(review.getWords(), positive, negative));
+            //review = getReview(file.getAbsolutePath());
+            //review = review.replaceAll("\\p{Punct}", "");
+            //review = review.toLowerCase();
+            //String [] wordsInReview = review.split("\\s+");
+            //String classification = classifyReview(wordsInReview, positive, negative);
+                
+            if (review.getClassification().equals("positive")){
                 correctPos++;
             }
-
+    
             System.out.println("File Name: " + file.getName());
             System.out.println("Real Class: positive");
-            System.out.println("Predicted Class: " + classification);
+            System.out.println("Predicted Class: " + review.getClassification());
             System.out.println();
         }
 
         File negFolder = new File(negReviews);
         File [] listNegReviews = negFolder.listFiles();
-        String review2 = "";
         for (File file : listNegReviews){
             totalNeg++;
-            review2 = getReview(file.getAbsolutePath());
-            review2 = review2.replaceAll("\\p{Punct}", "");
-            review2 = review2.toLowerCase();
-            String [] wordsInReview2 = review2.split("\\s+");
-            String classification2 = classifyReview(wordsInReview2, positive, negative);
-            
-            if (classification2.equals("negative")){
+            MovieReview review2 = new MovieReview(SentimentAnalysisApp.getReview(file.getAbsolutePath()));
+            review2.removePunct();
+            review2.makeLowerCase();
+            //System.out.println(review2.getReview());
+            review2.setClassification(classifyReview(review2.getWords(), positive, negative));
+            //totalNeg++;
+            //review2 = getReview(file.getAbsolutePath());
+            //review2 = review2.replaceAll("\\p{Punct}", "");
+            //review2 = review2.toLowerCase();
+            //String [] wordsInReview2 = review2.split("\\s+");
+            //String classification2 = classifyReview(wordsInReview2, positive, negative);
+                
+            if (review2.getClassification().equals("negative")){
                 correctNeg++;
             }
-
+    
             System.out.println("File Name: " + file.getName());
             System.out.println("Real Class: negative");
-            System.out.println("Predicted Class: " + classification2);
+            System.out.println("Predicted Class: " + review2.getClassification());
             System.out.println();
         }
 
         printResults(correctPos, correctNeg, totalPos, totalNeg);
     }
 
+    /**
+     * Creates the lookup tables (2) with the positive and negative words in each
+     * 
+     * @param positive
+     * @param negative
+     * @param posWords
+     * @param negWords
+     */
     public static void makeTables(HashSet<String> positive, HashSet<String> negative, String posWords, String negWords){
         try {
             FileReader fr = new FileReader(posWords);
@@ -100,6 +122,12 @@ public class SentimentAnalysisApp {
         }
     }
 
+    /**
+     * Gets the review from a file
+     * 
+     * @param fileName
+     * @return the review in a string
+     */
     public static String getReview(String fileName){
         try {
             FileReader fr = new FileReader(fileName);
@@ -114,6 +142,14 @@ public class SentimentAnalysisApp {
         return " ";
     }
 
+    /**
+     * Classifies the review as either positive or negative
+     * 
+     * @param words
+     * @param positive
+     * @param negative
+     * @return the classification of the review (positive or negative)
+     */
     public static String classifyReview(String [] words, HashSet<String> positive, HashSet<String> negative){
         String theClass = "";
         int negWords = 0;
@@ -138,6 +174,14 @@ public class SentimentAnalysisApp {
         return theClass;
     }
 
+    /**
+     * Prints the results of the classifications made
+     * 
+     * @param correctPos
+     * @param correctNeg
+     * @param totalPos
+     * @param totalNeg
+     */
     public static void printResults(int correctPos, int correctNeg, int totalPos, int totalNeg){
         System.out.println("----------------------------------------------");
         System.out.println("- Correctly Classified Positive Reviews: " + correctPos + " -");
