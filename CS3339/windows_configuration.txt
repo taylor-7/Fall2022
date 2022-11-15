@@ -1,0 +1,8 @@
+Device name	DESKTOP-07PLMI7
+Processor	11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz   2.42 GHz
+Installed RAM	8.00 GB (7.80 GB usable)
+Device ID	AB514C7E-B875-4AE9-8AE7-D9AF3C490009
+Product ID	00342-20717-04018-AAOEM
+System type	64-bit operating system, x64-based processor
+Pen and touch	Pen and touch support with 10 touch points
+Cores 4
