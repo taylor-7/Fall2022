@@ -1,0 +1,8 @@
+2 threads: 1.917
+4 threads: 3.620
+8 threads: 3.672
+16 threads: 3.706
+32 threads: 3.736
+64 threads: 3.786
+128 threads: 3.835
+256 threads: 3.829
