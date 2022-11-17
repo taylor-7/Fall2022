@@ -1,0 +1,63 @@
+--------1 thread---------
+parallel loop = 5584.96 ms
+parallel loop = 5733.83 ms
+parallel loop = 5776.27 ms
+parallel loop = 5714.43 ms
+parallel loop = 5633.39 ms
+# Average = 5688.576 ms  #
+--------2 threads--------
+parallel loop = 2923.89 ms
+parallel loop = 3113.59 ms
+parallel loop = 2836.48 ms
+parallel loop = 2956.41 ms
+parallel loop = 3005.29 ms
+# Average = 2967.132 ms  #
+--------4 threads--------
+parallel loop = 1485.67 ms
+parallel loop = 1613.28 ms
+parallel loop = 1709.23 ms
+parallel loop = 1547.35 ms
+parallel loop = 1501.17 ms
+# Average = 1571.340 ms  #
+--------8 threads--------
+parallel loop = 1547.59 ms
+parallel loop = 1541.10 ms
+parallel loop = 1555.00 ms
+parallel loop = 1585.32 ms
+parallel loop = 1515.98 ms
+# Average = 1548.998 ms  #
+--------16 threads--------
+parallel loop = 1538.57 ms
+parallel loop = 1510.59 ms
+parallel loop = 1574.66 ms
+parallel loop = 1569.40 ms
+parallel loop = 1482.38 ms
+# Average = 1535.120 ms  #
+--------32 threads--------
+parallel loop = 1517.09 ms
+parallel loop = 1511.50 ms
+parallel loop = 1513.27 ms
+parallel loop = 1514.21 ms
+parallel loop = 1556.47 ms
+# Average = 1522.508 ms  #
+--------64 threads--------
+parallel loop = 1479.73 ms
+parallel loop = 1489.83 ms
+parallel loop = 1562.38 ms
+parallel loop = 1471.32 ms
+parallel loop = 1509.36 ms
+# Average = 1502.524 ms  #
+--------128 threads-------
+parallel loop = 1539.61 ms
+parallel loop = 1450.28 ms
+parallel loop = 1467.82 ms
+parallel loop = 1520.22 ms
+parallel loop = 1439.69 ms
+# Average = 1483.524 ms  #
+--------256 threads-------
+parallel loop = 1426.35 ms
+parallel loop = 1485.68 ms
+parallel loop = 1459.75 ms
+parallel loop = 1564.24 ms
+parallel loop = 1491.87 ms
+# Average = 1485.578 ms  #
